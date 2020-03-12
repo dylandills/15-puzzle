@@ -13,19 +13,31 @@ var tiles = [
 var gapX = 3;
 var gapY = 3;
 
-function slideTile(tile) {
+function slideTile(tile, duration) {
   tile.animate({
     top: tile.data("y") * tileHeight,
     left: tile.data("x") * tileWidth
-  });
+  }, duration || 200);
 }
 
 function down() {
   if (gapY > 0) {
     var tile = tiles[gapY - 1][gapX];
+    tiles[gapY][gapX] = tile;
     tile.data("y", gapY);
     slideTile(tile);
     gapY = gapY - 1;
+    tiles[gapY][gapX] = null;
+  }
+}
+
+function up() {
+  if (gapY < 3) {
+    var tile = tiles[gapY + 1][gapX];
+    tiles[gapY][gapX] = tile;
+    tile.data("y", gapY);
+    slideTile(tile);
+    gapY = gapY + 1;
     tiles[gapY][gapX] = null;
   }
 }
