@@ -42,6 +42,17 @@ function up() {
   }
 }
 
+function right() {
+  if (gapX > 0) {
+    var tile = tiles[gapY][gapX - 1];
+    tiles[gapY][gapX] = tile;
+    tile.data("x", gapX);
+    slideTile(tile);
+    gapX = gapX - 1;
+    tiles[gapY][gapX] = null;
+  }
+}
+
 function positionTiles() {
   for(var x = 0; x < 4; x++) {
     for(var y = 0; y < 4; y++) {
