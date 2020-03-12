@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<title>jQuery</title>
+		<script src="jquery-3.2.1.js"></script>
+		<script>
+		$(
+			function() {
+				var dom = document.createElement('a');
+				var jq = $('<a>');
+				
+				dom.href = "http://www.google.com";
+				dom.setAttribute("href", "http://www.google.com");
+				dom.innerText = "A google link";
+				
+				jq.attr("href", "http://www.google.com");
+				jq.text("A google link");
+				
+				jq = $("<br><a href='http://www.google.com'>A google link</a>")
+				
+				var results = document.getElementById("results");
+				results.appendChild(dom);
+				
+				var jqresults = $("#results2");
+				jqresults.append(jq);
+				
+				dom = document.createElement('a');
+				dom.href = "http://www.yahoo.com/";
+				dom.innerText = "Yahoo";
+				
+				results.insertBefore(dom, results.childNodes[0]);
+				
+				$("<a href='http://www.yahoo.com/'>Yahoo</a>").insertBefore("#results2");
+				results.style.color = "Red";
+				results.style.backgroundColor = "Yellow";
+				
+				jqresults.css("color", "Red");
+				jqresults.css("background-color", "Yellow");
+				
+				jqresults.css("color", "Red").css("background-color", "Yellow");
+				
+				jqresults.css({
+					color: "Red",
+					backgroundColor: "Yellow",
+					width: "100px",
+					height: "100px",
+					border: "1px solid black"
+				});
+				
+				jq = $("<img>").attr({
+					src: "https://s.zkcdn.net/Advertisers/bc85dff2b3dc44ddb9650e1659b1ad1e.png",
+					alt: "jQuery Heart",
+					width: "100px",
+					height: "100px"
+				});
+				
+				jqresults.append(jq);
+				
+				$("<a>")
+					.attr("href", "http://www.yahoo.com")
+					.text("A yahoo link")
+					.css("background-color", "Yellow")
+					.css("color", "Red");
+			}
+		);
+		</script>
+	</head>
+	<body>
+		<div id="results">Some Text</div>
+		<div id="results2">Some Text</div>
+		<input type="text" id="inputBox">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</body>
+</html>

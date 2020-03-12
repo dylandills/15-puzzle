@@ -13,15 +13,34 @@ var tiles = [
 var gapX = 3;
 var gapY = 3;
 
+function slideTile(tile) {
+  tile.animate({
+    top: tile.data("y") * tileHeight,
+    left: tile.data("x") * tileWidth
+  });
+}
+
+function down() {
+  if (gapY > 0) {
+    var tile = tiles[gapY - 1][gapX];
+    tile.data("y", gapY);
+    slideTile(tile);
+    gapY = gapY - 1;
+    tiles[gapY][gapX] = null;
+  }
+}
+
 function positionTiles() {
   for(var x = 0; x < 4; x++) {
     for(var y = 0; y < 4; y++) {
       var tile = tiles[y][x];
 
-      tile.css({
-        top: tile.data("y") * tileHeight,
-        left: tile.data("x") * tileWidth
-      });
+      if (tile) {
+        tile.css({
+          top: tile.data("y") * tileHeight,
+          left: tile.data("x") * tileWidth
+        });
+      }
     }
   }
 }
