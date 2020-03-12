@@ -121,8 +121,30 @@ function initTiles() {
   }
 }
 
+function keydown(event) {
+  console.log(event.which);
+  switch (event.which) {
+    case 38: //up
+      up();
+      break;
+    case 37: // left
+      left();
+      break;
+    case 39: // right
+      right();
+      break;
+    case 40: // down
+      down();
+      break;
+  }
+  event.stopPropagation();
+  event.preventDefault();
+
+}
+
 $(function(evt) {
     $(window).resize(resize);
+    $(document).keydown(keydown);
     initTiles();
     resize();
   }
